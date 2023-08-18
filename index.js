@@ -5,7 +5,8 @@ const db=require("./config/db")
 const CategoryRoutes=require("./routes/category")
 const ProductRoutes=require("./routes/product")
 
-const port = 5000
+const port = process.env.PORT ||3000;
+const host=process.env.HTTP_HOST || 'localhost';
 const app = express()
 app.use(morgan("dev"))
 app.use(express.json())
@@ -23,6 +24,6 @@ app.use('/categories', CategoryRoutes)
 //Products Routes
 app.use('/products', ProductRoutes)
 
-app.listen(port, () => {
+app.listen(port,host, () => {
     console.log(`server is running at port ${port}`)
 })
