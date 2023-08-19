@@ -6,7 +6,6 @@ tittle: String,
 price: Number,
 description: String,
 category: String,
-tittle: String,
 image:String,
 rating:Object,
 })
