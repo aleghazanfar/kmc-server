@@ -1,5 +1,6 @@
 const express = require("express")
 const morgan = require("morgan")
+const cors=require("cors")
 const db=require("./config/db")
 //Routes
 const CategoryRoutes=require("./routes/category")
@@ -10,6 +11,7 @@ const host=process.env.HTTP_HOST || 'localhost';
 const app = express()
 app.use(morgan("dev"))
 app.use(express.json())
+app.use(cors())
 
 //database connection
 db.connect()

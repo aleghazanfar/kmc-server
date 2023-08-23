@@ -1,6 +1,6 @@
 const express = require("express")
 const Products = require("../models/product")
-const { default: mongoose } = require("mongoose")
+const mongodb  = require("mongodb")
 
 const router = express.Router()
 
@@ -18,15 +18,16 @@ router.get("/", async (req, res) => {
 //GET: Product By Id
 router.get("/:id", async (req, res) => {
     try {
-        const id = req.params.id;
-        const objectId = mongoose.objectId
+        const id = req.params.id
+        const objectId = mongodb.ObjectId
         if (!objectId.isValid(id)) {
-            return res.status(400).json({ message: "Invalid Request Id" })
-
+            return res.status(400).json({ message: "Invalid request Id" })
         }
-        const product = await Products.find({ _id: id })
+        const product = await Products.findOne({ _id: id })
         if (product == null)
             return res.status(404).json({ message: "No Product Found" })
+        else
+        return res.status(200).json(product)
 
     }
     catch (error) {
