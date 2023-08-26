@@ -40,10 +40,14 @@ router.post("/", async (req, res) => {
     //const category=req.body
     // console.log(category)
     try {
-        const categoryName = req.body.categoryName
+        const title = req.body.title
         const imageUrl = req.body.imageUrl
+        if(title=="")
+        {
+            return res.json({message:"Categroy Tittle is Required"})
+        }
         const newCategory = new Categories({
-            categoryName,
+            title,
             imageUrl
         })
         newCategory.save().then(() => {

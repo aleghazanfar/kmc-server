@@ -5,6 +5,7 @@ const db=require("./config/db")
 //Routes
 const CategoryRoutes=require("./routes/category")
 const ProductRoutes=require("./routes/product")
+const UserRoutes=require("./routes/user")
 
 const port = process.env.PORT ||3000;
 const host=process.env.HTTP_HOST || 'localhost';
@@ -25,6 +26,9 @@ app.use('/categories', CategoryRoutes)
 
 //Products Routes
 app.use('/products', ProductRoutes)
+
+//Users Routes
+app.use('/users',UserRoutes)
 
 app.listen(port,host, () => {
     console.log(`server is running at port ${port}`)

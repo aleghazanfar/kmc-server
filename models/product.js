@@ -9,6 +9,6 @@ category: String,
 image:String,
 rating:Object,
 })
-//category model
+//Product Model model
 const Products = mongoose.model('product', productsSchema)
 module.exports= Products
